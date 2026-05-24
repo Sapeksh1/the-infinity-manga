@@ -1,55 +1,213 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Infinity | Manga</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            background-color: rgb(245, 0, 0);
-        }
-        h1 {
-            color: white;
-            text-align: center;
-            font-size: 5em;
-            margin-top: 20vh;
-        }
-        h3 {
-            color: white;
-            text-align: center;
-            font-size: 2em;
-        }
-        button {
-            display: block;
-            margin: 10px auto;
-            padding: 10px 20px;
-            font-size: 1.5em;
-            cursor: pointer;
-            color:rgb(89, 6, 6);
-            background-color: white;
-        }
-        canvas {
-            display: none;
-            margin: 20px auto;
-             padding: 50px 20px;
-            border: 1px solid white;
-                   }
-        .book-container{
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+h2{
+    color: #ff0000;
+    }
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:'';
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+    url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1974&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+    z-index:-2;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:radial-gradient(circle at center, transparent 20%, black 80%);
+    z-index:-1;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:120px 20px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero h1{
+    font-size:6rem;
+    text-transform:uppercase;
+    letter-spacing:6px;
+    margin-bottom:20px;
+    color:#ff3131;
+    text-shadow:0 0 30px rgba(255,49,49,0.8);
+}
+
+.hero p{
+    font-size:1.3rem;
+    line-height:1.8;
+    color:#ddd;
+    margin-bottom:40px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:16px 35px;
+    border:none;
+    border-radius:50px;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+    text-decoration:none;
+}
+
+.primary{
+    background:#ff3131;
+    color:white;
+    box-shadow:0 0 20px rgba(255,49,49,0.6);
+}
+
+.primary:hover{
+    transform:translateY(-4px);
+    background:#ff0000;
+}
+
+.secondary{
+    background:transparent;
+    color:white;
+    border:2px solid white;
+}
+
+.secondary:hover{
+    background:white;
+    color:black;
+}
+
+.chapter-box{
+    background:rgba(0,0,0,0.6);
+    border-radius:25px;
+    padding:40px;
+    border:2px solid rgba(255,49,49,0.3);
+    max-width:900px;
+    margin:40px auto;
+}
+
+.chapter-box iframe{
+    width:100%;
+    height:700px;
+    border:none;
+    border-radius:20px;
+}
+
+.book-container{
     width:90%;
     margin:40px auto;
-    border:3px solid white;
-    border-radius:15px;
+    border:3px solid rgba(255,49,49,0.3);
+    border-radius:25px;
     overflow:hidden;
-    display:none;}
-        
-        .book-container.show {
-    display:block;}
+    display:none;
+    background:rgba(0,0,0,0.6);
+    padding:40px;
+}
+
+.book-container.show {
+    display:block;
+}
+.about{
+    text-align:center;
+    max-width:900px;
+    margin:auto;
+}
+
+.about p{
+    line-height:2;
+    color:#ddd;
+    font-size:1.1rem;
+}
+
+footer{
+    padding:40px 20px;
+    text-align:center;
+    background:black;
+    border-top:1px solid rgba(255,255,255,0.1);
+}
+
+footer p{
+    color:#888;
+}
+
+.glow{
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #ff3131;
+    }
+    to{
+        text-shadow:0 0 30px #ff3131,0 0 50px #ff3131;
+    }
+}
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:3.5rem;
+}
+
+.chapter-box iframe{
+    height:400px;
+}
+
+}
 
     </style>
 </head>
 <body>
-<h1>The Infinity</h1>
-<h3>Manga by Sapeksh Raj Singh</h3>
 
-<button class="show-btn">Show ch 1</button><button class="hide-btn">reset</button>
+<div class="hero">
+    <div class="hero-content">
+        <h1 class="glow">THE INFINITY</h1>
+        <p>Manga by Sapeksh Raj Singh</p>
+        <div class="buttons">
+            <button class="btn primary show-btn">Show Chapter 1</button>
+            <button class="btn secondary hide-btn">Reset</button>
+        </div>
+    </div>
+</div>
 
 <div class="book-container">
     <iframe
@@ -62,6 +220,23 @@
 </div>
 
 <br>
+<h2 class="section-title" align ="center">About The Manga</h2>
+
+<div class="about">
+<p>
+The Infinity is a dark fantasy manga created by Sapeksh Raj Singh.
+The story explores pain, survival, revenge, and limitless power.
+Inspired by anime aesthetics and cinematic storytelling, the series combines emotional depth with intense action.
+</p>
+</div>
+
+</section>
+
+<footer>
+<p>
+© 2026 THE INFINITY | Created by Sapeksh Raj Singh
+</p>
+</footer>
 
 <script>
     const showBtn = document.querySelector('.show-btn');
