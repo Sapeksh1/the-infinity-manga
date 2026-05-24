@@ -1,0 +1,81 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(245, 0, 0);
+        }
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: 5em;
+            margin-top: 20vh;
+        }
+        h3 {
+            color: white;
+            text-align: center;
+            font-size: 2em;
+        }
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            cursor: pointer;
+            color:rgb(89, 6, 6);
+            background-color: white;
+        }
+        canvas {
+            display: none;
+            margin: 20px auto;
+             padding: 50px 20px;
+            border: 1px solid white;
+                   }
+        .book-container{
+    width:90%;
+    margin:40px auto;
+    border:3px solid white;
+    border-radius:15px;
+    overflow:hidden;
+    display:none;}
+        
+        .book-container.show {
+    display:block;}
+
+    </style>
+</head>
+<body>
+<h1>The Infinity</h1>
+<h3>Manga by Sapeksh Raj Singh</h3>
+
+<button class="show-btn">Show ch 1</button><button class="hide-btn">reset</button>
+
+<div class="book-container">
+    <iframe
+        src="https://heyzine.com/flip-book/b2b2c82f8e.html"
+        width="100%"
+        height="700"
+        frameborder="0"
+        allowfullscreen>
+    </iframe>
+</div>
+
+<br>
+
+<script>
+    const showBtn = document.querySelector('.show-btn');
+    const hideBtn = document.querySelector('.hide-btn');
+    const bookContainer = document.querySelector('.book-container');
+    
+    showBtn.addEventListener('click', function() {
+        bookContainer.classList.add('show');
+    });
+    
+    hideBtn.addEventListener('click', function() {
+        bookContainer.classList.remove('show');
+    });
+</script>
+
+</body>
+</html>
